@@ -9,13 +9,15 @@ if (isset($-post["ajouter"])){
     $telephone =$_POST["telephone"];
     $description =$_POST["description"];
     $statut=$_POST["statut"];
-    $nouveauColis=
+    
+    $nouveauColis=[
       "numero" => $numero,"
       "client" => $client,
       "telephone"=>$telephone,
       "description"=>$description,
       "statut" =>$statut
       ]
+    
       $cotenue = file_get_contents($fichier);
       $colis = json_decode($cotenue, true);
       $colis[]=$nouveauColis;
@@ -89,5 +91,23 @@ if (isset($_GET["recherche"])){
     </tr>
 <?php
 foreach($colis as $c){
-  if(
+  if($recherche ==""
+     $c["numero"]==$recherche 
+      $c["telephone"]==$recherche
+      ){
+      ?>
+      <tr>
+          <td><?php echo $c["numero"];?></td>
+          <td><?php echo $c["client"];?></td>
+          <td><?php echo $c["telephone"];?></td>
+          <td><?php echo $c["description"];?></td>
+          <td><?php echo $c["status"];?></td>
+      </tr>
+    <?php
+}
+}
+?>
+</table>
+</body>
+</html>
     
